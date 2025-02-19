@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hirafi_frontend/views/main_pages/dashboard_craftsman.dart';
+import 'package:hirafi_frontend/views/auth/login.dart';
+import 'package:hirafi_frontend/views/main_pages/dashboards/dashboard_craftsman.dart';
 
 
 void main() {
@@ -12,9 +13,10 @@ class Hirafi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "حرفي",
       theme: ThemeData(fontFamily: 'Roboto'),
       debugShowCheckedModeBanner: false,
-      home: Dashboard(),
+      home: Login(),
     );
   }
 }

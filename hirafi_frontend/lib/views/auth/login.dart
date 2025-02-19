@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hirafi_frontend/views/auth/signup.dart';
+
+import '../../models/constants.dart';
+import '../main_pages/dashboards/dashboard_craftsman.dart';
 class Login extends StatefulWidget {
-  const Login({super.key, required this.title});
-  final String title;
+  const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
@@ -24,7 +26,7 @@ class _LoginState extends State<Login> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFFb0c4de),
+                  HirafiConstants().hirafi_blue,
                   Color(0xFFafeeee)
                 ]
             )
@@ -38,7 +40,7 @@ class _LoginState extends State<Login> {
                   alignment: Alignment.center,
                   child: Padding(
                     padding: EdgeInsets.only(top:70),
-                    child: Text("Hirafi"
+                    child: Text("حرفي"
                       ,style: TextStyle(fontSize: 50,fontWeight: FontWeight.w700,color: Colors.white),
                     ),
                   ),
@@ -58,7 +60,7 @@ class _LoginState extends State<Login> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Align(alignment: Alignment.topCenter,child: Text("Log in",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),),
+                          child: Align(alignment: Alignment.topCenter,child: Text("تسجيل الدخول",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top:20,right: 16,left: 16),
@@ -67,7 +69,7 @@ class _LoginState extends State<Login> {
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Color(0xFFFFFFFF),//white
-                              hintText: "Email , Phone Number",
+                              hintText: "البريد الإلكتروني او رقم الهاتف",
                                 enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(color: Colors.transparent),
@@ -88,7 +90,7 @@ class _LoginState extends State<Login> {
                                 filled: true,
                                 fillColor: Color(0xFFFFFFFF),
                                 focusColor: Colors.transparent,
-                                hintText: "Password",
+                                hintText: "كلمة المرور",
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(color: Colors.transparent),
@@ -115,9 +117,14 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: EdgeInsets.only(bottom: 8,left: 16,right: 16),
                           child: ElevatedButton(
-                                onPressed: () =>(){},
+                                onPressed: (){
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(builder: (context)=>Dashboard())
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xFFb0c4de),
+                                  backgroundColor: HirafiConstants().hirafi_blue,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       side: BorderSide(color: Colors.transparent)// Adjust the radius here
@@ -127,7 +134,7 @@ class _LoginState extends State<Login> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                        "Log in",
+                                        "تسجيل الدخول",
                                         style: TextStyle(color: Colors.white,fontSize: 14),
                                     ),
                                   ],
@@ -136,7 +143,7 @@ class _LoginState extends State<Login> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom:8.0),
-                          child: Text("Or Sign up with",style: TextStyle(fontSize: 12),),
+                          child: Text("أو قم بالتسجيل باستخدام",style: TextStyle(fontSize: 12),),
                         ),
 
                         //continue with google button here:
@@ -160,7 +167,7 @@ class _LoginState extends State<Login> {
                                 children: [
                                   FaIcon(FontAwesomeIcons.google,color: Colors.black),
                                   SizedBox(width: 10),
-                                  Text("Continue with Google",
+                                  Text("تسجيل باسنخدام جوجل",
                                     style: TextStyle(
                                       color: Colors.black,
                                     ),
@@ -173,7 +180,7 @@ class _LoginState extends State<Login> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Don't Have An Account?",style: TextStyle(fontSize: 12),),
+                            Text("ليس لديك حساب؟",style: TextStyle(fontSize: 12),),
                             TextButton(
                               onPressed: () {
                                 Navigator.push(
@@ -182,7 +189,7 @@ class _LoginState extends State<Login> {
                                 );
                               },
                               child: Text(
-                                'Sign Up',
+                                'اشتراك',
                                 style: TextStyle(
                                   color: Colors.blue,
                                   fontSize: 12,

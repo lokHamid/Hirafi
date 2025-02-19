@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../models/constants.dart';
 import 'login.dart';
 class Signup extends StatefulWidget {
   const Signup({super.key, required this.title});
@@ -25,7 +26,7 @@ class _SignupState extends State<Signup> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFFb0c4de),
+                HirafiConstants().hirafi_blue,
                 Color(0xFFafeeee)
               ])
         ),
@@ -40,7 +41,7 @@ class _SignupState extends State<Signup> {
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(top:70),
-                      child: Text("Hirafi"
+                      child: Text("حرفي"
                         ,style: TextStyle(fontSize: 50,fontWeight: FontWeight.w700,color: Colors.white),
                       ),
                     ),
@@ -61,7 +62,7 @@ class _SignupState extends State<Signup> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Align(alignment: Alignment.topCenter,child: Text("Sign up",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),),
+                          child: Align(alignment: Alignment.topCenter,child: Text("اشتراك",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top:20,right: 16,left: 16),
@@ -70,7 +71,7 @@ class _SignupState extends State<Signup> {
                             decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Color(0xFFFFFFFF),//white
-                                hintText: "Email , Phone Number",
+                                hintText: "البريد الإلكتروني أو رقم الهاتف",
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(color: Colors.transparent),
@@ -91,7 +92,7 @@ class _SignupState extends State<Signup> {
                               filled: true,
                               fillColor: Color(0xFFFFFFFF),
                               focusColor: Colors.transparent,
-                              hintText: "Password",
+                              hintText: "كلمة المرور",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.transparent),
@@ -123,7 +124,7 @@ class _SignupState extends State<Signup> {
                               filled: true,
                               fillColor: Color(0xFFFFFFFF),
                               focusColor: Colors.transparent,
-                              hintText: "Confirm Password",
+                              hintText: "تأكيد كلمة المرور",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.transparent),
@@ -153,7 +154,7 @@ class _SignupState extends State<Signup> {
                           child: ElevatedButton(
                               onPressed: () =>(){},
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xFFb0c4de),
+                                  backgroundColor: HirafiConstants().hirafi_blue,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       side: BorderSide(color: Colors.transparent)// Adjust the radius here
@@ -163,7 +164,7 @@ class _SignupState extends State<Signup> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Create Account",
+                                    "إنشاء حساب",
                                     style: TextStyle(color: Colors.white,fontSize: 14),
                                   ),
                                 ],
@@ -175,16 +176,16 @@ class _SignupState extends State<Signup> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Already Have An Account?",style: TextStyle(fontSize: 12),),
+                            Text("هل لديك حساب بالفعل؟",style: TextStyle(fontSize: 12),),
                             TextButton(
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Login(title: "",)),
+                                  MaterialPageRoute(builder: (context) => Login()),
                                 );
                               },
                               child: Text(
-                                'Log in',
+                                'تسجيل الدخول',
                                 style: TextStyle(
                                   color: Colors.blue,
                                   fontSize: 12,
