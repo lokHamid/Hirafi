@@ -1,21 +1,95 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hirafi_frontend/viewmodels/authenticationViewModel.dart';
 
+import '../../models/client.dart';
 import '../../models/constants.dart';
+import '../../providers/providers.dart';
 import 'login.dart';
-class Signup extends StatefulWidget {
-  const Signup({super.key, required this.title});
-  final String title;
+
+
+
+const String EMAIL_ERROR_MESSAGE = "البريد الإلكتروني غير صالح!";
+const String PASSWORD_ERROR_MESSAGE = "يجب أن تحتوي كلمة المرور على 8 أحرف ورقم واحد على الأقل!";
+const String FULLNAME_ERROR_MESSAGE = "الاسم الكامل غير صالح!فقط الحروف الصغيرة مسموح بها";
+const String PASSWORDS_UNMATCH = "كلمات المرور غير متطابقة!";
+const String emailPatternRegEx =
+    r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+const String passwordPatternRegEx = r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$';
+const String fullnamePatternRegEx = r'^[A-Za-z]+(?: [A-Za-z]+)?$';
+
+class Signup extends ConsumerWidget {
+  Signup({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController fullnameController = TextEditingController();
 
   @override
-  State<Signup> createState() => _SignupState();
-}
+  Widget build(BuildContext context , WidgetRef ref) {
+    final obsucreText = ref.watch(obscureTextProvider);
+    final avm = AuthenticationViewModel(ref.read(firebaseAuthServiceProvider), ref);
+    final isLoading = ref.watch(isLoadingAuthFlag);
 
-class _SignupState extends State<Signup> {
-  bool obscureText = true;
+    void showErrorDialog(BuildContext context, String message) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('خطأ'),
+            content: Text(message),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the dialog
+                },
+                child: Text('نعم'),
+              ),
+            ],
+          );
+        },
+      );
+    }
 
-  @override
-  Widget build(BuildContext context) {
+    void validateInfo() async{
+      String fullname = fullnameController.text.trim();
+      String email = emailController.text.trim();
+      String password = passwordController.text.trim();
+      String confirmPass = confirmPasswordController.text.trim();
+
+
+      RegExp fullnameRegex = RegExp(fullnamePatternRegEx);
+      if(!fullnameRegex.hasMatch(fullname)){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(FULLNAME_ERROR_MESSAGE)));
+        return;
+      }
+
+      RegExp emailRegex = RegExp(emailPatternRegEx);
+      if(!emailRegex.hasMatch(email)){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(EMAIL_ERROR_MESSAGE)));
+        return;
+      }
+
+      RegExp passRegex = RegExp(passwordPatternRegEx);
+      if(!passRegex.hasMatch(password)){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PASSWORD_ERROR_MESSAGE)));
+        return;
+      }
+      if(password != confirmPass){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PASSWORDS_UNMATCH)));
+        return;
+      }
+
+       try{
+        Client? result = await avm.signUpWithEmailAndPassword(fullname: fullname, email: email, password: password, location: "");
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("تم التسجيل بنجاح")));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
+       }catch(e){
+        showErrorDialog(context, e.toString());
+       }
+    }
 
     return Scaffold(
       body: Container(
@@ -64,14 +138,37 @@ class _SignupState extends State<Signup> {
                           padding: const EdgeInsets.all(8.0),
                           child: Align(alignment: Alignment.topCenter,child: Text("اشتراك",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),),
                         ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10,left: 16,right: 16),
+                          child: TextField(
+                            controller: fullnameController,
+                            style: TextStyle(color: Colors.black,fontSize: 14),
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Color(0xFFFFFFFF),
+                              focusColor: Colors.transparent,
+                              hintText: "الاسم الكامل",
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.transparent),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.blue.shade400,width: 2.0),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(top:20,right: 16,left: 16),
                           child: TextField(
+                            controller: emailController,
                             style: TextStyle(color: Colors.black,fontSize: 14),
                             decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Color(0xFFFFFFFF),//white
-                                hintText: "البريد الإلكتروني أو رقم الهاتف",
+                                hintText: "البريد الإلكتروني",
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(color: Colors.transparent),
@@ -86,7 +183,8 @@ class _SignupState extends State<Signup> {
                         Padding(
                           padding: const EdgeInsets.only(top:20,bottom: 10,left: 16,right: 16),
                           child: TextField(
-                            obscureText: obscureText,
+                            obscureText: obsucreText,
+                            controller: passwordController,
                             style: TextStyle(color: Colors.black,fontSize: 14),
                             decoration: InputDecoration(
                               filled: true,
@@ -103,23 +201,25 @@ class _SignupState extends State<Signup> {
                               ),
                               suffixIcon: IconButton(
                                 icon: Icon(
-                                  obscureText ? Icons.visibility_off : Icons.visibility, // Eye icon toggle
+                                  obsucreText ? Icons.visibility_off : Icons.visibility, // Eye icon toggle
                                 ),
                                 onPressed: () {
-                                  setState(() {
-                                    obscureText = !obscureText; // Toggle visibility
-                                  });
+                                  ref.read(obscureTextProvider.notifier).state = !ref.read(obscureTextProvider.notifier).state;
                                 },
                               ),
                             ),
+                            inputFormatters: [
+                              BlockPasteFormatter()
+                            ],
                           ),
                         ),
                         ///confirm pass:
                         Padding(
                           padding: const EdgeInsets.only(top: 10,bottom: 10,left: 16,right: 16),
                           child: TextField(
-                            obscureText: obscureText,
+                            obscureText: obsucreText,
                             style: TextStyle(color: Colors.black,fontSize: 14),
+                            controller: confirmPasswordController,
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Color(0xFFFFFFFF),
@@ -135,24 +235,21 @@ class _SignupState extends State<Signup> {
                               ),
                               suffixIcon: IconButton(
                                 icon: Icon(
-                                  obscureText ? Icons.visibility_off : Icons.visibility, // Eye icon toggle
+                                  obsucreText ? Icons.visibility_off : Icons.visibility, // Eye icon toggle
                                 ),
                                 onPressed: () {
-                                  setState(() {
-                                    obscureText = !obscureText; // Toggle visibility
-                                  });
+                                  ref.read(obscureTextProvider.notifier).state = !ref.read(obscureTextProvider.notifier).state;
                                 },
                               ),
                             ),
                           ),
                         ),
 
-
-                        /// login button here :
-                        Padding(
+                        /// signup button here :
+                        isLoading? CircularProgressIndicator(color: HirafiConstants().hirafi_blue,) : Padding(
                           padding: EdgeInsets.only(bottom: 8,left: 16,right: 16),
                           child: ElevatedButton(
-                              onPressed: () =>(){},
+                              onPressed: () => validateInfo(),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: HirafiConstants().hirafi_blue,
                                   shape: RoundedRectangleBorder(
@@ -176,7 +273,6 @@ class _SignupState extends State<Signup> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("هل لديك حساب بالفعل؟",style: TextStyle(fontSize: 12),),
                             TextButton(
                               onPressed: () {
                                 Navigator.push(
@@ -192,7 +288,8 @@ class _SignupState extends State<Signup> {
                                   decoration: TextDecoration.none,
                                 ),
                               ),
-                            )
+                            ),
+                            Text("هل لديك حساب بالفعل؟",style: TextStyle(fontSize: 12),),
                           ],
                         )
                       ],
@@ -207,3 +304,7 @@ class _SignupState extends State<Signup> {
     );
   }
 }
+
+
+/*
+* */

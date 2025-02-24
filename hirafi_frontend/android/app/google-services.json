@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "545690699996",
+    "project_id": "hirafi-913f6",
+    "storage_bucket": "hirafi-913f6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545690699996:android:9e17803ac064457aa38c19",
+        "android_client_info": {
+          "package_name": "com.hirafi.hirafi_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7q84WrMfB7OSwbT_jB1g3_PeqbpqmjSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
