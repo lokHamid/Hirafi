@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hirafi_frontend/models/constants.dart';
-import 'package:hirafi_frontend/views/main_pages/dashboards/settings.dart';
+import 'package:hirafi_frontend/providers/providers.dart';
+import 'package:hirafi_frontend/views/main_pages/dashboards/my_profile.dart';
 import 'package:hirafi_frontend/views/main_pages/marketplace/marketplace.dart';
 import 'package:hirafi_frontend/views/main_pages/searchUsers/search_users.dart';
 
 import '../../../models/tool.dart';
 import '../chats/chats.dart';
 import '../marketplace/tool_view_page.dart';
+import '../searchUsers/craftsman_profile.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+
+class Dashboard extends ConsumerWidget{
+    List<Tool> myMarketTools = List.empty(); ///for now.
+
   @override
-  State<Dashboard> createState() => _DashboardState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentUser = ref.watch(currentUserProvider);
 
-class _DashboardState extends State<Dashboard> {
-    List<Tool> myMarketTools = [Tool("مطرقة", "الأدوات اليدوية", "متجر جون", "\$15", "ستانلي", "مطرقة فولاذية متينة."),
-    Tool("المثقاب اللاسلكي", "أدوات كهربائية", "أدوات التقنية", "\$75", "بوش", "مثقاب 18 فولت مع بطارية."),
-    Tool("منشار", "الأدوات اليدوية", "لوازم DIY", "\$20", "ديوالت", "شفرة حادة لقطع الخشب."),
-    Tool("طاحونة الزاوية", "أدوات كهربائية", "أدوات للمحترفين", "\$90", "ماكيتا", "مدمجة وقوية.")];
-
-  bool isCrafstman = true;
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight),
@@ -38,7 +34,7 @@ class _DashboardState extends State<Dashboard> {
             child: AppBar(
               actions: [
                 IconButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Settings()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProfile()));
                 }, icon: FaIcon(FontAwesomeIcons.solidCircleUser))
               ],
               title: Text("لوحة القيادة"),
@@ -149,7 +145,7 @@ class _DashboardState extends State<Dashboard> {
             ),
 
             /// RATING CARD
-            isCrafstman ? Row(
+              Row(
               children: [
                 Expanded(
                   child: Padding(
@@ -177,8 +173,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
               ],
-            )
-            : Container(),
+            ),
 
             /// MARKETPLACE SECTION WITH LISTVIEW
             Padding(
@@ -226,6 +221,56 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ],
                   ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                shape: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.transparent)
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("الحرفيين بالقرب منك",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 300,
+                      child: ListView.builder(
+                          itemCount: 5, /// for now ;_;
+                          itemBuilder: (context,i){
+
+                            return ListTile(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CraftsmanProfile()));
+                              },
+                              title: Text("سعيد زيتوني"),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("نجار اثاث"),
+                                  Row(
+                                    children: [
+                                      FaIcon(FontAwesomeIcons.locationDot,size: 14,),
+                                      SizedBox(width: 5,),
+                                      Text("قسنطينة، الجزائر", style: TextStyle(fontSize: 14, color: Colors.grey)),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              leading: FaIcon(FontAwesomeIcons.solidCircleUser),
+                            );
+                          }),
+                    )
+                  ],
                 ),
               ),
             ),

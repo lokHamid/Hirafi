@@ -46,21 +46,15 @@ class Login extends ConsumerWidget {
     }
 
     try {
+      await avm.signInWithEmailAndPassword(email: email,password: password);
 
-      await avm.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("تم تسجيل الدخول بنجاح!")),
       );
-
-      // Navigate to the home screen or another screen
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Dashboard()),
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context)=>Dashboard()),
+          (route) => false
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -73,20 +67,15 @@ class Login extends ConsumerWidget {
     final firebaseAuthService = ref.watch(firebaseAuthServiceProvider);
 
     try {
-      Client? client = await firebaseAuthService.signInWithGoogle();
-      if(client != null){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Dashboard()));
-        _disposeTextController();
-      }
+      await firebaseAuthService.signInWithGoogle();
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context)=>Dashboard()),
+              (route) => false
+      );
     } catch (e) {
-
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
     }
-  }
-
-  void _disposeTextController(){
-    emailController.dispose();
-    passwordController.dispose();
   }
 
   @override
@@ -250,7 +239,7 @@ class Login extends ConsumerWidget {
                                   FaIcon(FontAwesomeIcons.google, color: Colors.black),
                                   SizedBox(width: 10),
                                   Text(
-                                    "اشتراك باستخدام جوجل",
+                                    "تسجيل باستخدام جوجل",
                                     style: TextStyle(color: Colors.black),
                                   ),
                                 ],

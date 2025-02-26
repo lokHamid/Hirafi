@@ -4,6 +4,7 @@ class Craftsman extends Client {
   String _speciality;
   String _experience;
   String _about;
+  double _rating;
 
   // Constructor with named parameters
   Craftsman({
@@ -13,14 +14,17 @@ class Craftsman extends Client {
     required String speciality,
     required String experience,
     required String about,
+    required double rating
   })  : _speciality = speciality,
         _experience = experience,
-        _about = about;
+        _about = about,
+        _rating = rating;
 
   // Getters
   String get speciality => _speciality;
   String get experience => _experience;
   String get about => _about;
+  double get rating => _rating;
 
   // Setters (Optional)
   set speciality(String newSpeciality) {
@@ -33,5 +37,9 @@ class Craftsman extends Client {
 
   set about(String newAbout) {
       _about = newAbout;
+  }
+
+  set rating(double rating){
+    _rating = rating;
   }
 }

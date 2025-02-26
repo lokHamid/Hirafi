@@ -109,7 +109,7 @@ class _SearchUsersState extends State<SearchUsers> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Card(
                 shape: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -161,7 +161,7 @@ class _SearchUsersState extends State<SearchUsers> {
 
             ///Open Projects Posted By Clients.
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Card(
                 shape: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -235,7 +235,7 @@ class _SearchUsersState extends State<SearchUsers> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Card(
                 shape: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),

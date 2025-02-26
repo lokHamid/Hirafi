@@ -32,25 +32,6 @@ class Signup extends ConsumerWidget {
     final avm = AuthenticationViewModel(ref.read(firebaseAuthServiceProvider), ref);
     final isLoading = ref.watch(isLoadingAuthFlag);
 
-    void showErrorDialog(BuildContext context, String message) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('خطأ'),
-            content: Text(message),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context); // Close the dialog
-                },
-                child: Text('نعم'),
-              ),
-            ],
-          );
-        },
-      );
-    }
 
     void validateInfo() async{
       String fullname = fullnameController.text.trim();
@@ -82,12 +63,16 @@ class Signup extends ConsumerWidget {
       }
 
        try{
-        Client? result = await avm.signUpWithEmailAndPassword(fullname: fullname, email: email, password: password, location: "");
+        await avm.signUpWithEmailAndPassword(fullname: fullname, email: email, password: password, location: "");
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("تم التسجيل بنجاح")));
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context)=>Login()),
+                (route) => false
+        );
        }catch(e){
-        showErrorDialog(context, e.toString());
+         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
        }
     }
 
@@ -275,9 +260,10 @@ class Signup extends ConsumerWidget {
                           children: [
                             TextButton(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Login()),
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(builder: (context)=>Login()),
+                                        (route) => false
                                 );
                               },
                               child: Text(
