@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hirafi_frontend/models/craftsman.dart';
 import 'package:hirafi_frontend/views/main_pages/dashboards/dashboard_craftsman.dart';
 import 'package:hirafi_frontend/views/main_pages/searchUsers/add_job_offer_view.dart';
 import 'package:hirafi_frontend/views/main_pages/searchUsers/craftsman_profile.dart';
@@ -40,7 +39,7 @@ class _SearchUsersState extends State<SearchUsers> {
               ),
             ],
             title: Text(
-              "البحث عن الحرفيين",
+              "Find Users",
               style: TextStyle(fontSize: 20),
             ),
             backgroundColor: Colors.transparent,
@@ -64,12 +63,12 @@ class _SearchUsersState extends State<SearchUsers> {
                   children: [
                     Row(
                       children: [
-                        Text("حرفي",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
+                        Text("Hirafi",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
                       ],
                     ),
                     Row(
                       children: [
-                        Text("سعيد زيتوني",style: TextStyle(color: Colors.white,fontSize: 18)),
+                        Text("saaid zitouni",style: TextStyle(color: Colors.white,fontSize: 18)),
                       ],
                     ),
                     Row(
@@ -82,21 +81,21 @@ class _SearchUsersState extends State<SearchUsers> {
             ),
             ListTile(
                 leading: FaIcon(FontAwesomeIcons.houseUser),
-                title: Text("لوحة القيادة"),
+                title: Text("Dashboard"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()));
                 }
             ),
             ListTile(
                 leading: FaIcon(FontAwesomeIcons.cartShopping),
-                title: Text("السوق"),
+                title: Text("Marketplace"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Marketplace()));
                 }
             ),
             ListTile(
               leading: FaIcon(FontAwesomeIcons.comment),
-              title: Text("الدردشات النشطة"),
+              title: Text("Active Chats"),
               onTap: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Chats()));
               },
@@ -122,7 +121,7 @@ class _SearchUsersState extends State<SearchUsers> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("الحرفيين بالقرب منك",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                          Text("Craftsman Near You",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
                         ],
                       ),
                     ),
@@ -136,16 +135,16 @@ class _SearchUsersState extends State<SearchUsers> {
                           onTap: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>CraftsmanProfile()));
                           },
-                          title: Text("سعيد زيتوني"),
+                          title: Text(""),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("نجار اثاث"),
+                              Text(""),
                               Row(
                                 children: [
                                   FaIcon(FontAwesomeIcons.locationDot,size: 14,),
                                   SizedBox(width: 5,),
-                                  Text("قسنطينة، الجزائر", style: TextStyle(fontSize: 14, color: Colors.grey)),
+                                  Text("", style: TextStyle(fontSize: 14, color: Colors.grey)),
                                 ],
                               ),
                             ],
@@ -174,7 +173,7 @@ class _SearchUsersState extends State<SearchUsers> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("المشاريع المفتوحة.",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                          Text("Open Job Offers",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
                         ],
                       ),
                     ),
@@ -201,7 +200,7 @@ class _SearchUsersState extends State<SearchUsers> {
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
-                                          Text("إعادة تصميم المطبخ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                          Text("",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                                         ],
                                       ),
                                     ),
@@ -210,7 +209,7 @@ class _SearchUsersState extends State<SearchUsers> {
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
-                                          Expanded(child: Text("بحاجة إلى رسام محترف ونجار أثاث محترف لإعادة تصميم المطبخ",style: TextStyle(fontSize: 14),softWrap: true,)),
+                                          Expanded(child: Text("",style: TextStyle(fontSize: 14),softWrap: true,)),
                                         ],
                                       ),
                                     ),
@@ -220,7 +219,7 @@ class _SearchUsersState extends State<SearchUsers> {
                                         children: [
                                           FaIcon(FontAwesomeIcons.locationDot,size: 16,),
                                           SizedBox(width: 10,),
-                                          Text("قسنطينة، الجزائر",style: TextStyle(fontSize: 14),),
+                                          Text("",style: TextStyle(fontSize: 14),),
                                         ],
                                       ),
                                     )
@@ -248,7 +247,7 @@ class _SearchUsersState extends State<SearchUsers> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("عروض العمل الخاصة بي",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                          Text("My Job Offers",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
                           IconButton(onPressed: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>AddJobOfferView()));
                           }, icon: FaIcon(FontAwesomeIcons.circlePlus))
@@ -278,7 +277,7 @@ class _SearchUsersState extends State<SearchUsers> {
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
-                                          Text("إعادة تصميم المطبخ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                          Text("",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                                         ],
                                       ),
                                     ),
@@ -287,7 +286,7 @@ class _SearchUsersState extends State<SearchUsers> {
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
-                                          Expanded(child: Text("بحاجة إلى رسام محترف ونجار أثاث محترف لإعادة تصميم المطبخ",style: TextStyle(fontSize: 14),softWrap: true,)),
+                                          Expanded(child: Text("",style: TextStyle(fontSize: 14),softWrap: true,)),
                                         ],
                                       ),
                                     ),
@@ -297,7 +296,7 @@ class _SearchUsersState extends State<SearchUsers> {
                                         children: [
                                           FaIcon(FontAwesomeIcons.locationDot,size: 16,),
                                           SizedBox(width: 10,),
-                                          Text("قسنطينة، الجزائر",style: TextStyle(fontSize: 14),),
+                                          Text("",style: TextStyle(fontSize: 14),),
                                         ],
                                       ),
                                     )
@@ -323,7 +322,7 @@ class _SearchUsersState extends State<SearchUsers> {
 
 class UserSearch extends SearchDelegate{
   String criteria = "name";
-  List<String> allResults = ["الحرفي 1" , "الحرفي 2" , "الحرفيون 3"];
+  List<String> allResults = ["craftsman1" , "craftsman2" , "craftsman3"];
   String currentLocation = "";
   String? selectedSection1;
   String? selectedSection2;
@@ -365,7 +364,7 @@ class UserSearch extends SearchDelegate{
                   color: selectedSection1 == "Speciality" ? Colors.blue : Colors.grey,
                 ),
                 SizedBox(width: 8),
-                Text("التخصص"),
+                Text("Speciality"),
               ],
             ),
           ),
@@ -385,7 +384,7 @@ class UserSearch extends SearchDelegate{
                   color: selectedSection2 == "Location" ? Colors.green : Colors.grey,
                 ),
                 SizedBox(width: 8),
-                Text("موقع"),
+                Text("Location"),
               ],
             ),
           ),

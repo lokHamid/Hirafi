@@ -11,6 +11,7 @@ class Craftsman extends Client {
     required super.fullName,
     required super.email,
     required super.location,
+    required super.uid,
     required String speciality,
     required String experience,
     required String about,
@@ -19,6 +20,23 @@ class Craftsman extends Client {
         _experience = experience,
         _about = about,
         _rating = rating;
+
+  Craftsman.fromClient({
+    required Client client,
+    required String speciality,
+    required String experience,
+    required String about,
+    required double rating,
+  })  : _speciality = speciality,
+        _experience = experience,
+        _about = about,
+        _rating = rating,
+        super(
+        fullName: client.fullName,
+        email: client.email,
+        location: client.location,
+        uid: client.uid,
+      );
 
   // Getters
   String get speciality => _speciality;
@@ -41,5 +59,34 @@ class Craftsman extends Client {
 
   set rating(double rating){
     _rating = rating;
+  }
+
+  @override
+  Map<String, dynamic> toMap() {
+    // Get the map from the parent class (Client)
+    final Map<String, dynamic> clientMap = super.toMap();
+
+    // Add Craftsman-specific properties
+    clientMap.addAll({
+      'speciality': _speciality,
+      'experience': _experience,
+      'about': _about,
+      'rating': _rating,
+    });
+
+    return clientMap;
+  }
+
+  factory Craftsman.fromMap(Map<String, dynamic> map) {
+    return Craftsman(
+      fullName: map['fullName'],
+      email: map['email'],
+      location: map['location'],
+      uid: map['uid'],
+      speciality: map['speciality'],
+      experience: map['experience'],
+      about: map['about'],
+      rating: map['rating'],
+    );
   }
 }

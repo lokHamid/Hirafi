@@ -64,7 +64,7 @@ class _JobViewPageState extends State<JobViewPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("إعادة تصميم المطبخ",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                            Text("Kitchen Re-Model",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
                           ],
                         ),
                       ),
@@ -73,7 +73,7 @@ class _JobViewPageState extends State<JobViewPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Expanded(child: Text("بحاجة إلى رسام محترف ونجار أثاث محترف لإعادة تصميم المطبخ",style: TextStyle(fontSize: 16),softWrap: true,)),
+                            Expanded(child: Text("",style: TextStyle(fontSize: 16),softWrap: true,)),
                           ],
                         ),
                       ),
@@ -83,7 +83,7 @@ class _JobViewPageState extends State<JobViewPage> {
                           children: [
                             FaIcon(FontAwesomeIcons.locationDot,size: 16,),
                             SizedBox(width: 10,),
-                            Expanded(child: Text("قسنطينة، الجزائر",style: TextStyle(fontSize: 16),softWrap: true,)),
+                            Expanded(child: Text("",style: TextStyle(fontSize: 16),softWrap: true,)),
                           ],
                         ),
                       ),
@@ -93,7 +93,7 @@ class _JobViewPageState extends State<JobViewPage> {
                           children: [
                             FaIcon(FontAwesomeIcons.user,size: 16,),
                             SizedBox(width: 10,),
-                            Expanded(child: Text("من طرف: سعيد زيتوني",style: TextStyle(fontSize: 16),softWrap: true,)),
+                            Expanded(child: Text("",style: TextStyle(fontSize: 16),softWrap: true,)),
                           ],
                         ),
                       ),
@@ -116,7 +116,7 @@ class _JobViewPageState extends State<JobViewPage> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "اتصل بالعميل",
+                                        "Contact Client",
                                         style: TextStyle(color: Colors.white,fontSize: 14),
                                       ),
                                     ],

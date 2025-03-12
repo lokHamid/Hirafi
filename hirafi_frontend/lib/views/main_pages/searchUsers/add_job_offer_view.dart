@@ -25,7 +25,7 @@ class _AddJobOfferViewState extends State<AddJobOfferView> {
           ),
           child: AppBar(
             title: Text(
-              "إضافة عرض عمل",
+              "Post A Job Offer",
               style: TextStyle(fontSize: 20),
             ),
             backgroundColor: Colors.transparent,
@@ -47,7 +47,7 @@ class _AddJobOfferViewState extends State<AddJobOfferView> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top:16.0),
-                          child: Text("معلومات الوظيفة",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          child: Text("Job Specifications",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                         ),
                       ],
                     ),
@@ -71,7 +71,7 @@ class _AddJobOfferViewState extends State<AddJobOfferView> {
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(color: Colors.grey.shade300)
                                   ),
-                                  hintText:"مسمى وظيفي"
+                                  hintText:"Job Title"
                               ),
                             ),
                           ),
@@ -101,7 +101,7 @@ class _AddJobOfferViewState extends State<AddJobOfferView> {
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(color: Colors.grey.shade300)
                                   ),
-                                  hintText: "الوصف / متطلبات الوظيفة"
+                                  hintText: "Description / Job Requirements"
                               ),
                             ),
                           ),
@@ -127,7 +127,7 @@ class _AddJobOfferViewState extends State<AddJobOfferView> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "نشر عرض العمل",
+                                      "Post Job Offer",
                                       style: TextStyle(color: Colors.white,fontSize: 14),
                                     ),
                                   ],

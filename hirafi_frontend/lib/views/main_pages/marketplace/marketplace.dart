@@ -10,16 +10,9 @@ import '../searchUsers/search_users.dart';
 
 
 String selectedCriteria = "";
-late List<Tool> recentTools;
-List<Tool> myMarketTools = [Tool("مطرقة", "الأدوات اليدوية", "متجر جون", "\$15", "ستانلي", "مطرقة فولاذية متينة."),
-  Tool("المثقاب اللاسلكي", "أدوات كهربائية", "أدوات التقنية", "\$75", "بوش", "مثقاب 18 فولت مع بطارية."),
-  Tool("منشار", "الأدوات اليدوية", "لوازم DIY", "\$20", "ديوالت", "شفرة حادة لقطع الخشب."),
-  Tool("طاحونة الزاوية", "أدوات كهربائية", "أدوات للمحترفين", "\$90", "ماكيتا", "مدمجة وقوية.")];
-
-List<Tool> allTools = [Tool("مطرقة", "الأدوات اليدوية", "متجر جون", "\$15", "ستانلي", "مطرقة فولاذية متينة."),
-  Tool("المثقاب اللاسلكي", "أدوات كهربائية", "أدوات التقنية", "\$75", "بوش", "مثقاب 18 فولت مع بطارية."),
-  Tool("منشار", "الأدوات اليدوية", "لوازم DIY", "\$20", "ديوالت", "شفرة حادة لقطع الخشب."),
-  Tool("طاحونة الزاوية", "أدوات كهربائية", "أدوات للمحترفين", "\$90", "ماكيتا", "مدمجة وقوية.")];
+late List<Tool> recentTools = List.empty();
+List<Tool> myMarketTools = List.empty();
+List<Tool> allTools = List.empty();
 
 class Marketplace extends StatefulWidget {
   const Marketplace({super.key});
@@ -29,18 +22,6 @@ class Marketplace extends StatefulWidget {
 }
 class _MarketplaceState extends State<Marketplace> {
   int? _selectedIndex;
-
-  @override
-  void initState(){
-    super.initState();
-    Tool drill = Tool("مثقاب كهربائي", "أدوات كهربائية", "أدوات XYZ", "\$79.99",null,"");
-    Tool saw = Tool("منشار يدوي", "أدوات يدوية", "اختيار النجار", "\$25.50",null,"");
-    Tool wrench = Tool("مفتاح ربط قابل للتعديل", "أدوات يدوية", "ToolPro", "\$12.75", null,"");
-    Tool screwdriver = Tool("مجموعة مفك البراغي","الأدوات اليدوية","FixIt","\$18.20",null,"");
-
-    recentTools = [drill, saw, wrench, screwdriver];
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +44,7 @@ class _MarketplaceState extends State<Marketplace> {
               ),
             ],
             title: Text(
-              "سوق الأدوات",
+              "Tools Marketplace",
               style: TextStyle(fontSize: 20),
             ),
             backgroundColor: Colors.transparent,
@@ -87,12 +68,12 @@ class _MarketplaceState extends State<Marketplace> {
                   children: [
                     Row(
                       children: [
-                        Text("حرفي",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
+                        Text("Hirafi",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
                       ],
                     ),
                     Row(
                       children: [
-                        Text("السعيد زيتوني",style: TextStyle(color: Colors.white,fontSize: 18)),
+                        Text("saaid zitouni",style: TextStyle(color: Colors.white,fontSize: 18)),
                       ],
                     ),
                     Row(
@@ -105,21 +86,21 @@ class _MarketplaceState extends State<Marketplace> {
             ),
             ListTile(
                 leading: FaIcon(FontAwesomeIcons.houseUser),
-                title: Text("لوحة القيادة"),
+                title: Text("Dashboard"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()));
                 }
             ),
             ListTile(
                 leading: FaIcon(FontAwesomeIcons.magnifyingGlass),
-                title: Text("البحث عن المستخدمين"),
+                title: Text("Find Users"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SearchUsers()));
                 }
             ),
             ListTile(
               leading: FaIcon(FontAwesomeIcons.comment),
-              title: Text("الدردشات النشطة"),
+              title: Text("Active Chats"),
               onTap: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Chats()));
               },

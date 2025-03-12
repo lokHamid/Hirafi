@@ -32,7 +32,7 @@ class _ItemListingState extends State<ItemListing> {
           ),
           child: AppBar(
             title: Text(
-              "إدراج أداة",
+              "List A Tool",
               style: TextStyle(fontSize: 20),
             ),
             backgroundColor: Colors.transparent,
@@ -54,14 +54,14 @@ class _ItemListingState extends State<ItemListing> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top:16.0),
-                          child: Text("معلومات الأداة",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          child: Text("Tool Information",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                         ),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("معلومات عامة:",style: TextStyle(fontSize: 12),)
+                        Text("General Information:",style: TextStyle(fontSize: 12),)
                       ],
                     ),
 
@@ -84,7 +84,7 @@ class _ItemListingState extends State<ItemListing> {
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(color: Colors.grey.shade300)
                                 ),
-                                hintText: "عنوان الأداة"
+                                hintText: "Tool Title"
                               ),
                             ),
                           ),
@@ -114,7 +114,7 @@ class _ItemListingState extends State<ItemListing> {
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(color: Colors.grey.shade300)
                                   ),
-                                  hintText: "وصف"
+                                  hintText: "About"
                               ),
                             ),
                           ),
@@ -146,7 +146,7 @@ class _ItemListingState extends State<ItemListing> {
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(color: Colors.grey.shade300)
                                   ),
-                                  hintText: "السعر بالدينار"
+                                  hintText: "Price In Dinars"
                               ),
                                 onChanged: (value) {
                                   if (value.isNotEmpty) {
@@ -177,14 +177,14 @@ class _ItemListingState extends State<ItemListing> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top:16.0),
-                          child: Text("تفاصيل الأداة",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          child: Text("Tool Specifications",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                         ),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("المواصفات والشروط:",style: TextStyle(fontSize: 12),)
+                        Text("Specifications And Conditions:",style: TextStyle(fontSize: 12),)
                       ],
                     ),
 
@@ -209,7 +209,7 @@ class _ItemListingState extends State<ItemListing> {
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(color: Colors.grey.shade300)
                                   ),
-                                  hintText: "ماركة"
+                                  hintText: "Brand"
                               ),
                             ),
                           ),
@@ -221,7 +221,7 @@ class _ItemListingState extends State<ItemListing> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left:10.0),
-                          child: Text("فئة:"),
+                          child: Text("Category:"),
                         ),
                       ],
                     ),
@@ -245,7 +245,7 @@ class _ItemListingState extends State<ItemListing> {
                                   isExpanded: true,
                                   value: _selectedCategory,
                                   dropdownColor: Colors.white, // Change dropdown menu color
-                                  hint: Text("حدد الفئة", style: TextStyle(color: Colors.black)),
+                                  hint: Text("choose category", style: TextStyle(color: Colors.black)),
                                   style: TextStyle(color: Colors.black), // Text color inside the button
                                   iconEnabledColor: Colors.black, // Dropdown arrow color
                                   items: HirafiConstants().categories.map((String option) {
@@ -272,7 +272,7 @@ class _ItemListingState extends State<ItemListing> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left:10.0),
-                          child: Text("الحالة:"),
+                          child: Text("Condition:"),
                         ),
                       ],
                     ),
@@ -289,7 +289,7 @@ class _ItemListingState extends State<ItemListing> {
                           },
                           activeColor: Colors.blue, // Changes to blue when selected
                         ),
-                        Text('جديد'),
+                        Text('New'),
                         SizedBox(width: 10), // Spacing
                         Radio<String>(
                           value: 'used_like_new',
@@ -301,7 +301,7 @@ class _ItemListingState extends State<ItemListing> {
                           },
                           activeColor: Colors.blue, // Changes to blue when selected
                         ),
-                        Text('مستخدم'),
+                        Text('Used'),
                       ],
                     ),
 
@@ -324,7 +324,7 @@ class _ItemListingState extends State<ItemListing> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "أداة القائمة",
+                                      "List Tool",
                                       style: TextStyle(color: Colors.white,fontSize: 14),
                                     ),
                                   ],

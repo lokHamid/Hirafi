@@ -30,7 +30,7 @@ class _ChatsState extends State<Chats> {
             actions: [
               IconButton(onPressed: ()=>(){}, icon: FaIcon(FontAwesomeIcons.bell))
             ],
-            title: Text("الدردشات النشطة",style: TextStyle(fontSize: 20),),
+            title: Text("Active Chats",style: TextStyle(fontSize: 20),),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -52,12 +52,12 @@ class _ChatsState extends State<Chats> {
                   children: [
                     Row(
                       children: [
-                        Text("حرفي",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
+                        Text("Hirafi",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
                       ],
                     ),
                     Row(
                       children: [
-                        Text("السعيد زيتوني",style: TextStyle(color: Colors.white,fontSize: 18)),
+                        Text("saaid zitouni",style: TextStyle(color: Colors.white,fontSize: 18)),
                       ],
                     ),
                     Row(
@@ -70,21 +70,21 @@ class _ChatsState extends State<Chats> {
             ),
             ListTile(
                 leading: FaIcon(FontAwesomeIcons.houseUser),
-                title: Text("لوحة القيادة"),
+                title: Text("Dashboard"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()));
                 }
             ),
             ListTile(
                 leading: FaIcon(FontAwesomeIcons.magnifyingGlass),
-                title: Text("البحث عن المستخدمين"),
+                title: Text("Find Users"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SearchUsers()));
                 }
             ),
             ListTile(
                 leading: FaIcon(FontAwesomeIcons.cartShopping),
-                title: Text("السوق"),
+                title: Text("Marketplace"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Marketplace()));
                 }

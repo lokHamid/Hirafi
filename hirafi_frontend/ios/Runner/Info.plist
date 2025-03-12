@@ -9,6 +9,11 @@
 	<!-- Put me in the [my_project]/ios/Runner/Info.plist file -->
 	<!-- Google Sign-in Section -->
 	<key>CFBundleURLTypes</key>
+
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to show it on the map.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to show it on the map.</string>
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>

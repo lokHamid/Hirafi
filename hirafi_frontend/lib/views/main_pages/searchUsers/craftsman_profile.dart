@@ -21,7 +21,7 @@ class _CraftsmanProfileState extends State<CraftsmanProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("الملف الشخصي للحرفي",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+        title: Text("Craftsman Profile",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
         backgroundColor: Colors.white
       ),
       body: SingleChildScrollView(
@@ -36,7 +36,7 @@ class _CraftsmanProfileState extends State<CraftsmanProfile> {
                       padding: const EdgeInsets.only(top:8.0,left:8.0),
                       child: Row(
                         children: [
-                          Text("السعيد زيتوني",style: TextStyle(fontSize: 20),),
+                          Text("saaid zitouni",style: TextStyle(fontSize: 20),),
                         ],
                       ),
                     ),
@@ -44,7 +44,7 @@ class _CraftsmanProfileState extends State<CraftsmanProfile> {
                       padding: const EdgeInsets.only(top:8.0,left:8.0),
                       child: Row(
                         children: [
-                          Text("سباك المياه",style: TextStyle(fontSize: 16),),
+                          Text("Water Plumber",style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -54,7 +54,7 @@ class _CraftsmanProfileState extends State<CraftsmanProfile> {
                         children: [
                           FaIcon(FontAwesomeIcons.locationDot,size: 20,),
                           SizedBox(width: 10,),
-                          Text("قسنطينة، الجزائر",style: TextStyle(fontSize: 16),),
+                          Text("",style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -67,15 +67,15 @@ class _CraftsmanProfileState extends State<CraftsmanProfile> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("15+",style: TextStyle(color: HirafiConstants().hirafi_blue,fontSize: 20),),
-                              Text("سنوات الخبرة")
+                              Text("",style: TextStyle(color: HirafiConstants().hirafi_blue,fontSize: 20),),
+                              Text("Years Of Experience")
                             ],
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("3.8",style: TextStyle(color: HirafiConstants().hirafi_blue,fontSize: 20),),
-                              Text("متوسط التقييم")
+                              Text("0.0",style: TextStyle(color: HirafiConstants().hirafi_blue,fontSize: 20),),
+                              Text("Average Rating")
                             ],
                           ),
                         ],
@@ -97,7 +97,7 @@ class _CraftsmanProfileState extends State<CraftsmanProfile> {
                             onPressed: () {
                               // Handle the rating submission here
                             },
-                            child: Text('إعطاء \nتقييم',style: TextStyle(color: Colors.white),softWrap: true,),
+                            child: Text('rate',style: TextStyle(color: Colors.white),softWrap: true,),
                           ),
                           SizedBox(width: 10),
                           Row(
@@ -127,12 +127,12 @@ class _CraftsmanProfileState extends State<CraftsmanProfile> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("حول هذا الحرفي",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                        Text("About This Craftsman",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
                       ],
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("حرفي محترف للغاية.",style: TextStyle(fontSize: 16),),
+                      child: Text("",style: TextStyle(fontSize: 16),),
                     )
                   ],
                 ),
@@ -157,7 +157,7 @@ class _CraftsmanProfileState extends State<CraftsmanProfile> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "الاتصال بالحرفي",
+                              "Contact Craftsman",
                               style: TextStyle(color: Colors.white,fontSize: 14),
                             ),
                           ],

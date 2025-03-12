@@ -29,13 +29,14 @@ class _ToolViewPageState extends State<ToolViewPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
+                        ///biggest title:
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Expanded(
                               child: Text(
-                                "أداة احترافية للنص الطويل لغرض الاختبار",
+                                "Bosch Wireless Drill",
                                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.center, // Centers text inside Text widget
                                 softWrap: true,
@@ -60,7 +61,7 @@ class _ToolViewPageState extends State<ToolViewPage> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text("المواصفات",style: TextStyle(fontSize: 18),),
+                                      Text("Specifications",style: TextStyle(fontSize: 18),),
                                     ],
                                   ),
                                   Padding(
@@ -69,8 +70,8 @@ class _ToolViewPageState extends State<ToolViewPage> {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       spacing: 50,
                                       children: [
-                                        Text("ماركة",style: TextStyle(fontWeight: FontWeight.bold),),
-                                        Text("بوش",style: TextStyle(color: HirafiConstants().hirafi_blue),),
+                                        Text("Brand",style: TextStyle(fontWeight: FontWeight.bold),),
+                                        Text("",style: TextStyle(color: HirafiConstants().hirafi_blue),),
                                       ],
                                     ),
                                   ),
@@ -80,8 +81,8 @@ class _ToolViewPageState extends State<ToolViewPage> {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       spacing: 50,
                                       children: [
-                                        Text("الحالة",style: TextStyle(fontWeight: FontWeight.bold),),
-                                        Text("جديد",style: TextStyle(color: HirafiConstants().hirafi_blue),),
+                                        Text("Condition",style: TextStyle(fontWeight: FontWeight.bold),),
+                                        Text("",style: TextStyle(color: HirafiConstants().hirafi_blue),),
                                       ],
                                     ),
                                   ),
@@ -91,8 +92,8 @@ class _ToolViewPageState extends State<ToolViewPage> {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       spacing: 50,
                                       children: [
-                                        Text("سعر",style: TextStyle(fontWeight: FontWeight.bold),),
-                                        Text("\$27.99",style: TextStyle(color: HirafiConstants().hirafi_blue),),
+                                        Text("Price",style: TextStyle(fontWeight: FontWeight.bold),),
+                                        Text("",style: TextStyle(color: HirafiConstants().hirafi_blue),),
                                       ],
                                     ),
                                   ),
@@ -109,7 +110,7 @@ class _ToolViewPageState extends State<ToolViewPage> {
                           children: [
                             Expanded(
                               child: Text(
-                                "حول هذه الأداة",
+                                "About This Tool",
                                 style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.center, // Centers text inside Text widget
                                 softWrap: true,
@@ -119,7 +120,7 @@ class _ToolViewPageState extends State<ToolViewPage> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text("نص طويل لأداة احترافية جدًا لأغراض الاختبار، الوصف أو حول (النص الذي يعجبك).",style: TextStyle(fontSize: 14),),
+                          child: Text("",style: TextStyle(fontSize: 14),),
                         )
                       ],
                     ),
@@ -146,7 +147,7 @@ class _ToolViewPageState extends State<ToolViewPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "اتصل بالبائع",
+                              "Contact Seller",
                               style: TextStyle(color: Colors.white,fontSize: 14),
                             ),
                           ],
