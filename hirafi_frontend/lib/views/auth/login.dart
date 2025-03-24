@@ -3,10 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hirafi_frontend/viewmodels/authenticationViewModel.dart';
+import 'package:hirafi_frontend/views/auth/payment_packs.dart';
 import 'package:hirafi_frontend/views/auth/signup.dart';
 import '../../models/constants.dart';
 import '../../providers/providers.dart';
-import '../main_pages/dashboards/dashboard_craftsman.dart';
+import '../main_pages/dashboard/dashboard_craftsman.dart';
 
 
 class Login extends ConsumerWidget {
@@ -23,7 +24,7 @@ class Login extends ConsumerWidget {
     // Basic input validation
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("please fill in all the fields!")),
+        SnackBar(content: Text("من فضلك إملأ جميع الحقول!")),
       );
       return;
     }
@@ -31,14 +32,14 @@ class Login extends ConsumerWidget {
     RegExp regex = RegExp(emailPatternRegEx);
     if(!regex.hasMatch(email)){
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Invalid Email!")),
+        SnackBar(content: Text("البريد الإلكتروني غير صالح!")),
       );
       return;
     }
     regex = RegExp(passwordPatternRegEx);
     if(!regex.hasMatch(password)){
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("password must contain atleast 8 letter and 1 number!")),
+        SnackBar(content: Text("يجب أن تحتوي كلمة المرور على 8 أحرف ورقم واحد على الأقل!")),
       );
       return;
     }
@@ -47,7 +48,7 @@ class Login extends ConsumerWidget {
       await avm.signInWithEmailAndPassword(email: email,password: password);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Logged in Successfully")),
+        SnackBar(content: Text("تم تسجيل الدخول بنجاح")),
       );
       Navigator.pushAndRemoveUntil(
           context,
@@ -56,7 +57,7 @@ class Login extends ConsumerWidget {
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Login Failed: $e")),
+        SnackBar(content: Text("فشل تسجيل الدخول: $e")),
       );
     }
   }
@@ -106,7 +107,7 @@ class Login extends ConsumerWidget {
                       child: Padding(
                         padding: EdgeInsets.only(top: 70),
                         child: Text(
-                          "Hirafi",
+                          "حرفي",
                           style: TextStyle(fontSize: 50, fontWeight: FontWeight.w700, color: Colors.white),
                         ),
                       ),
@@ -134,7 +135,7 @@ class Login extends ConsumerWidget {
                             child: Align(
                               alignment: Alignment.topCenter,
                               child: Text(
-                                "Login",
+                                "تسجيل الدخول",
                                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
                               ),
                             ),
@@ -147,7 +148,7 @@ class Login extends ConsumerWidget {
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Color(0xFFFFFFFF),
-                                hintText: "Email",
+                                hintText: "البريد الإلكتروني أو رقم الهاتف",
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(color: Colors.transparent),
@@ -168,7 +169,7 @@ class Login extends ConsumerWidget {
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Color(0xFFFFFFFF),
-                                hintText: "Password",
+                                hintText: "كلمة المرور",
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(color: Colors.transparent),
@@ -208,7 +209,7 @@ class Login extends ConsumerWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Login",
+                                    "تسجيل الدخول",
                                     style: TextStyle(color: Colors.white, fontSize: 14),
                                   ),
                                 ],
@@ -237,7 +238,7 @@ class Login extends ConsumerWidget {
                                   FaIcon(FontAwesomeIcons.google, color: Colors.black),
                                   SizedBox(width: 10),
                                   Text(
-                                    "Continue with Google",
+                                    "التسجيل باستخدام جوجل",
                                     style: TextStyle(color: Colors.black),
                                   ),
                                 ],
@@ -249,16 +250,15 @@ class Login extends ConsumerWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Don't have an account?", style: TextStyle(fontSize: 12)),
                               TextButton(
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Signup()),
+                                    MaterialPageRoute(builder: (context) => PaymentPacks()),
                                   );
                                 },
                                 child: Text(
-                                  'Sign up',
+                                  'اشتراك',
                                   style: TextStyle(
                                     color: Colors.blue,
                                     fontSize: 12,
@@ -266,6 +266,7 @@ class Login extends ConsumerWidget {
                                   ),
                                 ),
                               ),
+                              Text("ليس لديك حساب؟", style: TextStyle(fontSize: 12)),
                             ],
                           )
                         ],

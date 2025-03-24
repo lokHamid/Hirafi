@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hirafi_frontend/views/main_pages/dashboards/dashboard_craftsman.dart';
+import 'package:hirafi_frontend/views/main_pages/dashboard/dashboard_craftsman.dart';
 import 'package:hirafi_frontend/views/main_pages/searchUsers/add_job_offer_view.dart';
 import 'package:hirafi_frontend/views/main_pages/searchUsers/craftsman_profile.dart';
 

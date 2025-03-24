@@ -9,10 +9,10 @@ import 'login.dart';
 
 
 
-const String EMAIL_ERROR_MESSAGE = "Invalid Email!";
-const String PASSWORD_ERROR_MESSAGE = "Password must contain atleast 8 letters and 1 number!";
-const String FULLNAME_ERROR_MESSAGE = "Invalid full name! only lowercase letters are permissible";
-const String PASSWORDS_UNMATCH = "Passwords Do Not Match!";
+const String EMAIL_ERROR_MESSAGE = "البريد الإلكتروني غير صالح!";
+const String PASSWORD_ERROR_MESSAGE = "يجب أن تحتوي كلمة المرور على 8 أحرف ورقم واحد على الأقل!";
+const String FULLNAME_ERROR_MESSAGE = "الاسم الكامل غير صحيح! يُسمح فقط بالأحرف الصغيرة";
+const String PASSWORDS_UNMATCH = "كلمات المرور غير متطابقة!";
 const String emailPatternRegEx =
     r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
 const String passwordPatternRegEx = r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$';
@@ -65,7 +65,7 @@ class Signup extends ConsumerWidget {
        try{
         await avm.signUpWithEmailAndPassword(fullname: fullname, email: email, password: password, location: null);
 
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Signed Up Successfully")));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("تم التسجيل بنجاح")));
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context)=>Login()),
@@ -100,7 +100,7 @@ class Signup extends ConsumerWidget {
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(top:70),
-                      child: Text("Hirafi"
+                      child: Text("حرفي "
                         ,style: TextStyle(fontSize: 50,fontWeight: FontWeight.w700,color: Colors.white),
                       ),
                     ),
@@ -121,7 +121,7 @@ class Signup extends ConsumerWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Align(alignment: Alignment.topCenter,child: Text("Sign up",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),),
+                          child: Align(alignment: Alignment.topCenter,child: Text("اشتراك",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),),
                         ),
 
                         Padding(
@@ -133,7 +133,7 @@ class Signup extends ConsumerWidget {
                               filled: true,
                               fillColor: Color(0xFFFFFFFF),
                               focusColor: Colors.transparent,
-                              hintText: "Full Name",
+                              hintText: "الاسم الكامل",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.transparent),
@@ -153,7 +153,7 @@ class Signup extends ConsumerWidget {
                             decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Color(0xFFFFFFFF),//white
-                                hintText: "Email",
+                                hintText: "البريد الإلكتروني أو رقم الهاتف",
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(color: Colors.transparent),
@@ -175,7 +175,7 @@ class Signup extends ConsumerWidget {
                               filled: true,
                               fillColor: Color(0xFFFFFFFF),
                               focusColor: Colors.transparent,
-                              hintText: "Password",
+                              hintText: "كلمة المرور",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.transparent),
@@ -209,7 +209,7 @@ class Signup extends ConsumerWidget {
                               filled: true,
                               fillColor: Color(0xFFFFFFFF),
                               focusColor: Colors.transparent,
-                              hintText: "Confirm Password",
+                              hintText: "تأكيد كلمة المرور",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide(color: Colors.transparent),
@@ -246,7 +246,7 @@ class Signup extends ConsumerWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Sign up",
+                                    "اشتراك",
                                     style: TextStyle(color: Colors.white,fontSize: 14),
                                   ),
                                 ],
@@ -258,7 +258,6 @@ class Signup extends ConsumerWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Already have an account?",style: TextStyle(fontSize: 12),),
                             TextButton(
                               onPressed: () {
                                 Navigator.pushAndRemoveUntil(
@@ -268,7 +267,7 @@ class Signup extends ConsumerWidget {
                                 );
                               },
                               child: Text(
-                                'Login',
+                                'تسجيل الدخول',
                                 style: TextStyle(
                                   color: Colors.blue,
                                   fontSize: 12,
@@ -276,6 +275,7 @@ class Signup extends ConsumerWidget {
                                 ),
                               ),
                             ),
+                            Text("هل لديك حساب بالفعل؟",style: TextStyle(fontSize: 12),),
                           ],
                         )
                       ],

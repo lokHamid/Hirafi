@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hirafi_frontend/models/constants.dart';
 import 'package:hirafi_frontend/providers/providers.dart';
-import 'package:hirafi_frontend/views/main_pages/dashboards/my_profile.dart';
+import 'package:hirafi_frontend/views/main_pages/dashboard/my_profile.dart';
 import 'package:hirafi_frontend/views/main_pages/marketplace/marketplace.dart';
 import 'package:hirafi_frontend/views/main_pages/searchUsers/search_users.dart';
 
@@ -11,8 +11,6 @@ import '../../../models/tool.dart';
 import '../../../services/tools_service.dart';
 import '../chats/chats.dart';
 import '../marketplace/tool_view_page.dart';
-import '../searchUsers/craftsman_profile.dart';
-
 
 class Dashboard extends ConsumerWidget{
   List<Tool> myMarketTools = List.empty();///for now.
@@ -48,7 +46,7 @@ class Dashboard extends ConsumerWidget{
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProfile()));
                 }, icon: FaIcon(FontAwesomeIcons.solidCircleUser))
               ],
-              title: Text("Dashboard"),
+              title: Text("لوحة القيادة"),
               backgroundColor: Colors.transparent,
               elevation: 0,
             ),
@@ -71,12 +69,12 @@ class Dashboard extends ConsumerWidget{
                 children: [
                   Row(
                     children: [
-                      Text("Hirafi",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
+                      Text("حرفي",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
                     ],
                   ),
                   Row(
                     children: [
-                      Text("saaid zitouni",style: TextStyle(color: Colors.white,fontSize: 18)),
+                      Text("سعيد زيتوني",style: TextStyle(color: Colors.white,fontSize: 18)),
                     ],
                   ),
                   Row(
@@ -89,21 +87,21 @@ class Dashboard extends ConsumerWidget{
             ),
             ListTile(
               leading: FaIcon(FontAwesomeIcons.magnifyingGlass),
-              title: Text("Find Users"),
+              title: Text("البحث عن المستخدمين"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SearchUsers()));
                 }
             ),
             ListTile(
               leading: FaIcon(FontAwesomeIcons.cartShopping),
-              title: Text("Marketplace"),
+              title: Text("السوق"),
                 onTap: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Marketplace()));
                 }
             ),
             ListTile(
               leading: FaIcon(FontAwesomeIcons.comment),
-              title: Text("Active Chats"),
+              title: Text("الدردشات النشطة"),
               onTap: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Chats()));
               },
@@ -135,14 +133,14 @@ class Dashboard extends ConsumerWidget{
                                 FaIcon(FontAwesomeIcons.locationDot,color: HirafiConstants().hirafi_blue,),
                                 SizedBox(width: 5,),
                                 Text(
-                                  (currentUser?.location == null)? "Location Not Set" : currentUser!.location.toString(), ///for now , must extract the location later from it using third party services.
+                                  "سيدي بلعباس,الجزائر", ///for now , must extract the location later from it using third party services.
                                   style: TextStyle(fontSize: 20,color: HirafiConstants().hirafi_blue),
                                   softWrap: true,
                                 ),
                               ],
                             ),
                             Text(
-                              "Current location",
+                              "الموقع الحالي",
                               style: TextStyle(fontSize: 18),
                             ),
                           ],
@@ -173,7 +171,7 @@ class Dashboard extends ConsumerWidget{
                               style: TextStyle(fontSize: 24,color: HirafiConstants().hirafi_blue),
                             ),
                             Text(
-                              "Average Rating",
+                              "متوسط التقييم",
                               style: TextStyle(fontSize: 18),
                             ),
                           ],
@@ -198,11 +196,11 @@ class Dashboard extends ConsumerWidget{
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Marketplace",
+                        "السوق",
                         style: TextStyle(fontSize: 24),
                       ),
                       Text(
-                        "My Listings",
+                        "قوائمي",
                         style: TextStyle(fontSize: 16),
                       ),
                       SizedBox(height: 10), // Space before list
@@ -231,56 +229,6 @@ class Dashboard extends ConsumerWidget{
                       ),
                     ],
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                shape: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.transparent)
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Craftsmen Near You",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 300,
-                      child: ListView.builder(
-                          itemCount: 5, /// for now ;_;
-                          itemBuilder: (context,i){
-
-                            return ListTile(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CraftsmanProfile()));
-                              },
-                              title: Text("saaid zitouni"),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Furniture Carpenter"),
-                                  Row(
-                                    children: [
-                                      FaIcon(FontAwesomeIcons.locationDot,size: 14,),
-                                      SizedBox(width: 5,),
-                                      Text("Constantine,Algeria", style: TextStyle(fontSize: 14, color: Colors.grey)),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              leading: FaIcon(FontAwesomeIcons.solidCircleUser),
-                            );
-                          }),
-                    )
-                  ],
                 ),
               ),
             ),

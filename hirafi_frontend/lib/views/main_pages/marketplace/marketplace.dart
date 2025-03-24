@@ -5,7 +5,7 @@ import 'package:hirafi_frontend/views/main_pages/marketplace/item_listing.dart';
 import 'package:hirafi_frontend/views/main_pages/marketplace/tool_view_page.dart';
 import '../../../models/tool.dart';
 import '../chats/chats.dart';
-import '../dashboards/dashboard_craftsman.dart';
+import '../dashboard/dashboard_craftsman.dart';
 import '../searchUsers/search_users.dart';
 
 

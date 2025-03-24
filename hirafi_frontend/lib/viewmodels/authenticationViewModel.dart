@@ -67,7 +67,7 @@ class AuthenticationViewModel {
     try{
       UserCredential creds = await _authService.signInWithGoogle();
       User? user = creds.user;
-      Client currentLogged = Client(fullName: user?.displayName ?? "Anonymous user", email: user?.email?? "Anonymous user", location: null ,uid: user!.uid);
+      Client currentLogged = Client(fullName: user?.displayName ?? "Anonymous user", email: user?.email?? "Anonymous user",uid: user!.uid);
 
       Map<String,dynamic>? mapPlaceholder = await _clientService.fetchUserById(user.uid);
 

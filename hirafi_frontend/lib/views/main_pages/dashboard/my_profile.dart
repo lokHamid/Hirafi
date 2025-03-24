@@ -32,7 +32,7 @@ class MyProfile extends ConsumerWidget {
     final ClientService clientService = ref.read(clientServiceProvider);
     final locationString = ref.watch(locationDisplayStringProvider);
 
-    setCurrentLocationString(currentUser,context,ref);
+    //setCurrentLocationString(currentUser,context,ref);
     /// ui parameters:
     final bool isCraftsman = currentUser is Craftsman;
     final int maxExpYears = 50;
@@ -132,7 +132,7 @@ class MyProfile extends ConsumerWidget {
                               Text(locationString ?? "Location Not Set",style: TextStyle(fontSize: 16),),
                             ],
                           ),
-                          HirafiButton(onPressed: () => getUserLocation(context,ref),text: "Set",)
+                          HirafiButton(onPressed: () {},text: "Set",)
                         ],
                       ),
                     ),
@@ -385,6 +385,7 @@ class MyProfile extends ConsumerWidget {
 
 
   /// method to fetch location:
+  /*
   Future<void> getUserLocation(BuildContext context,WidgetRef ref) async {
 
     // block any concurrent requests by using the isLoadingLocation flag:
@@ -449,4 +450,6 @@ class MyProfile extends ConsumerWidget {
       await _fetchLocationInfo(currentUser.location!.latitude, currentUser.location!.longitude, context, ref);
     }
   }
+   */
+
 }

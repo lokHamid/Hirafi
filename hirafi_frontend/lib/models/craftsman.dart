@@ -10,7 +10,6 @@ class Craftsman extends Client {
   Craftsman({
     required super.fullName,
     required super.email,
-    required super.location,
     required super.uid,
     required String speciality,
     required String experience,
@@ -34,7 +33,6 @@ class Craftsman extends Client {
         super(
         fullName: client.fullName,
         email: client.email,
-        location: client.location,
         uid: client.uid,
       );
 
@@ -81,7 +79,6 @@ class Craftsman extends Client {
     return Craftsman(
       fullName: map['fullName'],
       email: map['email'],
-      location: map['location'],
       uid: map['uid'],
       speciality: map['speciality'],
       experience: map['experience'],
